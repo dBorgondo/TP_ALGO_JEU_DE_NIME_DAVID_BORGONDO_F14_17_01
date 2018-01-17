@@ -1,0 +1,37 @@
+PROGRAMME Allumette;
+
+CONST
+	Allumettes_ini<-21 : entier;
+VAR
+	Allumettes,Prise : entier;
+
+DEBUT
+	Allumettes<-Allumettes_ini;
+	Prise<-0;
+	REPETER
+		ecrire("Joueur 1 à vous");
+		ecrire("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?");
+		REPETER 
+		lire(Prise); //3 
+		JUSQU'A ((Prise>0) ET (Prise<4)) ET (Prise<Allumettes)); // (VRAI ET VRAI) ET VRAI
+		Allumettes<-Allumettes-Prise; //21-3=18
+		SI Allumettes=1 ALORS //Faux
+			ecrire("Le joueur 1 a gagne")
+		SINON
+			ecrire("Il reste donc ",Allumettes," allumettes."); //18
+		FINSI;
+		SI Allumettes>=2 ALORS //Vrai
+			ecrire("Joueur 2 à vous");
+			ecrire("Il reste ",Allumettes," Allumettes, combien voulez vous en prendre ?"); //18
+			REPETER
+				lire(Prise) //1 
+			JUSQU'A ((Prise>0) ET (Prise<4)) ET (Prise<Allumettes)); // (VRAI ET VRAI) ET VRAI
+			Allumettes<-Allumettes-Prise; //18-1=17
+			SI Allumettes=1 ALORS //Faux
+				ecrire("Le joueur 2 a gagne") 
+			SINON 
+				ecrire("Il rest donc ",Allumettes," allumettes.") //17
+			FINSI;
+		FINSI;
+	JUSQU'A Allumettes=1; //Faux
+FIN
